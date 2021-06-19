@@ -6,10 +6,14 @@ const port = 8080;
 
 // App
 const app = express();
+const messages = {
+    1: 'Hello World',
+    2: 'Hello there',
+}
 
 // GET method route
 app.get('/', function (req, res) {
-    res.send('GET request to the homepage');
+    res.send(messages);
 });
   
 // POST method route
