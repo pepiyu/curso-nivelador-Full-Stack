@@ -3,8 +3,6 @@
 
 Cowsay is a farm cow that talks about animals and says random messages.
 
-
-```
  ______________________________________________________________________________________________________________________________________________________________________________________________________
 < Hello Human. I'm a talky farm cow and I know all about animals. Add an animal name in your URL using '/' (/dinosaurs, /dog, /cat, etc). I also talk about random philosophy. Add in your URL /random >
  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -13,7 +11,7 @@ Cowsay is a farm cow that talks about animals and says random messages.
             (__)\       )\/\
              U  ||----w |
                 ||     ||
-```
+
 
 This is a fork from
 <a href="https://github.com/eblancoh/curso-nivelador-Full-Stack">eblancoh/curso-nivelador-Full-Stack</a>
@@ -56,6 +54,11 @@ docker stop pepiyu/cowsay
 ## Resume a previously-stopped container
 ```
 docker start pepiyu/cowsay
+```
+
+## Remove image
+```
+docker rmi pepiyu/cowsay:latest
 ```
 
 
