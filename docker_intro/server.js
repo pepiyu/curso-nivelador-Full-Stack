@@ -13,52 +13,60 @@ const messages = [
     "The sooner I fall behind, the more time I have to catch up.",
     "Nothing makes a person more productive than the last minute.",
     "Someday is not a day of the week.",
-    "“How soon not now, becomes never.” ― Martin Luther King",
+    "Computers are evil!",
+    "How soon not now, becomes never.",
 ]
 
-var cowSays = ''
-   
-router.get('/:animal', function(req, res) {
-    // here we have bird or fish in req.params.animal
-    if(req.params.animal == 'bird') {
+const animalsAbout = {
+    pig: "Pigs are very clean animals!",
+    bird: "Birds can fly",
+    cat: "Some humans love cats. I find them annoying",
+    dog: "I love dogs, specially pugs. They\'re amazinnggg!",
+    dolphin: "Dolphins sleep by resting one side of the brain at a time.",
+    fish: "Fish can swim.",
+    dinosaurs: "Dinosaurs were reptiles that lived on Earth from about 230 million years ago to about 65 million years ago.",
+}
 
-        cowSays = 'Birds can fly'
 
-    } else if(req.params.animal == 'cat') {
+// GET method route
+app.get('/random', function (req, res) {
+    
+    var random = messages[Math.floor(Math.random()*messages.length)];
 
-        cowSays = 'Some humans love cats. I find them annoying'
-        
-    } else if(req.params.animal == 'dog') {
-
-        cowSays = 'I love dogs, specially pugs. They\'re amazinnggg!'
-
-    } else if(req.params.animal == 'fish') {
-
-        cowSays = 'Fish can swim'
-
-    } else if(req.params.animal == 'random') {
-
-        var random = messages[Math.floor(Math.random()*messages.length)];
-
-        cowSays = random
-        
-    } else {
-
-        cowSays = 'I\'ve never met them before, sorry. Try again'
-
-    }
-
+    var cowSays = random
     res.setHeader('Content-Type', 'text/txt');
     res.end(
       cowsay.say({
-        //text: "hello",
-        //text: random,
         text: cowSays,
         e: "oO",
         T: "U "
       })
     );
 });
+
+
+router.get('/:animal', function(req, res) {
+    // here we have bird or fish in req.params.animal
+    if(animalsAbout[req.params.animal]) {
+
+        var cowSays = animalsAbout[req.params.animal]
+        
+    } else {
+
+        var cowSays = 'I\'ve never met them before. Try another animal'
+
+    }
+
+    res.setHeader('Content-Type', 'text/txt');
+    res.end(
+      cowsay.say({
+        text: cowSays,
+        e: "oO",
+        T: "U "
+      })
+    );
+});
+
 app.use('/', router);
 
 //GET method route
@@ -67,26 +75,15 @@ app.get('/', function (req, res) {
     res.end(
       cowsay.say({
         text: 'Hello Human. I\'m a talky farm cow and I know all about animals. \
-Write an animal name in the URL using /animals.\
- I also talk about random philosophy. Write in the URL /random',
+Add an animal name in your URL using \'/\' (/dinosaurs, /dog, /cat, etc).\
+ I also talk about random philosophy. Add in your URL /random',
         e: "oO",
         T: "U "
       })
     );
 
 })
-
   
-// POST method route
-app.post('/', function (req, res) {
-    res.send('POST request to the homepage');
-});
-
-// GET method route
-app.get('/secret', function (req, res, next) {
-    res.send('Never be cruel, never be cowardly. And never eat pears!');
-    console.log('This is a console.log message.');
-});
 
 app.listen(port, hostname);
 console.log(`Running on http://${hostname}:${port}`);
