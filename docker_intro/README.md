@@ -3,9 +3,8 @@
 
 Cowsay is a farm cow that talks about animals and says random messages.
 
- ______________________________________________________________________________________________________________________________________________________________________________________________________
 < Hello Human. I'm a talky farm cow and I know all about animals. Add an animal name in your URL using '/' (/dinosaurs, /dog, /cat, etc). I also talk about random philosophy. Add in your URL /random >
- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
         \   ^__^
          \  (oO)\_______
             (__)\       )\/\
